@@ -69,7 +69,7 @@ function Student() {
   
   const fetchStudents = async () => {
     try {
-      const response = await fetch('http://localhost:5000/read');
+      const response = await fetch('deploy-mern-api-lake.vercel.app/read');
       const data = await response.json();
       // Format dateofbirth to display only the date without time zone
       const formattedStudents = data.map(student => ({
@@ -142,7 +142,7 @@ function Student() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/insert', {
+      const response = await fetch('deploy-mern-api-lake.vercel.app/insert', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -161,7 +161,7 @@ function Student() {
   const handleUpdate = async (event) => {
     console.log('Updating student:', formData);
     try {
-      const response = await fetch('http://localhost:5000/update', {
+      const response = await fetch('deploy-mern-api-lake.vercel.app/update', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -181,7 +181,7 @@ function Student() {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/delete/${id}`, {
+      const response = await fetch(`deploy-mern-api-lake.vercel.app/${id}`, {
         method: 'DELETE'
       });
   
