@@ -12,7 +12,7 @@ const PORT = 5000;
 
 app.use(express.json());
 app.use(cors({
-    origin:'https://deploy-mern-api-lake.vercel.app',
+    origin:'https://temp-frontend-black.vercel.app/',
     methods:["POST","GET","PUT","DELETE"],
     credentials: true
 }));
