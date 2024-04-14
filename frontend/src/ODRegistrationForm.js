@@ -101,7 +101,7 @@ const ODRegistrationForm = () => {
 
     const handleDownloadEvent = async (eventId) => {
         try {
-            const response = await axios.get(`http://localhost:5000/downloadEvent/${eventId}`, {
+            const response = await axios.get('http://localhost:5000/downloadEvent/${eventId}', {
                 responseType: 'blob'
             });
     
