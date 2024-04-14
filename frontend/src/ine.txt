@@ -1,0 +1,146 @@
+import React, { useState, useEffect } from 'react';
+import './css/modal.css';
+
+function App() {
+  const [students, setStudents] = useState([]);
+  const [formData, setFormData] = useState({
+    id: '',
+    roll_number: '',
+    name: '',
+    nss_unit_number: '1',
+    from_year: '',
+    to_year: '',
+    contact_number: '',
+    email: ''
+  });
+  const [popupMessage, setPopupMessage] = useState('');
+  const [editModalVisible, setEditModalVisible] = useState(false); // State variable to manage edit modal visibility
+
+  useEffect(() => {
+    fetchStudents();
+  }, []);
+
+  const fetchStudents = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/read');
+      const data = await response.json();
+      setStudents(data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    // Handle form submission for inserting new student
+  };
+
+  const handleUpdate = async (event) => {
+    // Handle form submission for updating student
+  };
+
+  const handleDelete = (id) => {
+    // Handle student deletion
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const editStudent = (student) => {
+    setFormData({
+      id: student._id,
+      roll_number: student.roll_number,
+      name: student.name,
+      nss_unit_number: student.nss_unit_number,
+      from_year: student.from_year,
+      to_year: student.to_year,
+      contact_number: student.contact_number,
+      email: student.email
+    });
+    setEditModalVisible(true); // Set edit modal visibility to true
+  };
+
+  const closeEditModal = () => {
+    setEditModalVisible(false);
+  };
+
+  return (
+    <section>
+      <div>
+        <h1>Student Details Form</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Roll Number</th>
+              <th>Name</th>
+              <th>NSS Unit Number</th>
+              <th>From Year</th>
+              <th>To Year</th>
+              <th>Contact Number</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {students.map(student => (
+              <tr key={student._id}>
+                <td>{student.roll_number}</td>
+                <td>{student.name}</td>
+                <td>{student.nss_unit_number}</td>
+                <td>{student.from_year}</td>
+                <td>{student.to_year}</td>
+                <td>{student.contact_number}</td>
+                <td>{student.email}</td>
+                <td>
+                  <button onClick={() => editStudent(student)}>Edit</button>
+                  <button onClick={() => handleDelete(student._id)}>Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {editModalVisible && (
+          <div id="editModal" className="modal" style={{ display: 'block' }}>
+            <div className="modal-content">
+              <span className="close" onClick={closeEditModal}>&times;</span>
+              <h2>Edit Student Details</h2>
+              <form id="editForm" onSubmit={handleUpdate}>
+                <input type="hidden" name="id" value={formData.id} />
+
+                <label htmlFor="roll_number">Roll Number:</label>
+                <input type="text" id="editRollNumber" name="roll_number" value={formData.roll_number} onChange={handleChange} required /><br /><br />
+
+                <label htmlFor="name">Name:</label>
+                <input type="text" id="editName" name="name" value={formData.name} onChange={handleChange} required /><br /><br />
+
+                <label htmlFor="nss_unit_number">NSS Unit Number:</label>
+                <input type="text" id="editNssUnitNumber" name="nss_unit_number" value={formData.nss_unit_number} onChange={handleChange} /><br /><br />
+
+                <label htmlFor="from_year">From Year:</label>
+                <input type="number" id="editFromYear" name="from_year" value={formData.from_year} onChange={handleChange} required /><br /><br />
+
+                <label htmlFor="to_year">To Year:</label>
+                <input type="number" id="editToYear" name="to_year" value={formData.to_year} onChange={handleChange} required /><br /><br />
+
+                <label htmlFor="contact_number">Contact Number:</label>
+                <input type="text" id="editContactNumber" name="contact_number" value={formData.contact_number} onChange={handleChange} /><br /><br />
+
+                <label htmlFor="email">Email:</label>
+                <input type="email" id="editEmail" name="email" value={formData.email} onChange={handleChange} /><br /><br />
+
+                <button type="submit">Update</button>
+              </form>
+            </div>
+          </div>
+        )}
+
+        {/* Popup message */}
+        {popupMessage && <p>{popupMessage}</p>}
+      </div>
+    </section>
+  );
+}
+
+export default App;

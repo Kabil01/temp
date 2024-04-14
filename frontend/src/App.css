@@ -1,0 +1,57 @@
+.navbar {
+  background-color: #012970;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.nss-logo img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.navbar-title {
+  font-size: 20px;
+}
+
+.menu-items button {
+  background-color: transparent;
+  border: none;
+  color: #012970;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #012970;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-content button {
+  color: #012970;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

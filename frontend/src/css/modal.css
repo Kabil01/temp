@@ -1,0 +1,414 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #aaa !important;
+    /*background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);*/
+   
+  }
+
+  .containerinpading {
+    padding: 40px 0px;
+  }
+  
+  .containerin{
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    border-radius: 6px;
+    padding: 40px;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.containerin header{
+    font-size:20px;
+    font-weight: 600;
+    color:#333;
+}
+
+.containerin header::before{
+    content:"";
+    position: absolute;
+    bottom: -2px;
+    height:3px;
+    width: 27px;
+    border-radius:8px;
+    background-color: #4070f4;
+}
+.containerin .form{
+    position: relative;
+    min-height: 350px;
+    background-color: #fff;
+}
+
+.containerin form .details{
+    margin-top:30px;
+}
+
+
+
+.containerin form .title{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 6px 0;
+    color: #333;
+}
+
+.containerin form .fields{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    flex-wrap:wrap;
+}
+
+form .fields .input-field{
+    display: flex;
+    width:calc(100% / 3 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+.input-field label{
+    font-size: 12px;
+    font-weight: 500;
+    color:#2e2e2e
+}
+
+.input-field input{
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 0 15px;
+    height:42px;
+    margin: 8px 0;
+}
+
+.input-field select{
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 0 15px;
+    height:42px;
+    margin: 8px 0;
+}
+ 
+.input-field input:is(:focus, :valid){
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+.input-field input[type="date"]{
+    color: #707070;
+}
+
+.input-field input[type="date"]:valid{
+    color: #333;
+}
+
+.containerin form button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:45px;
+    max-width: 200px;
+    width:100%;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    margin: 25px 0;
+    background-color: #329553;
+    transition:all 0.3s linear;
+    cursor:pointer;
+}
+
+form button:hover{
+    background-color: #06831f;
+}
+  
+ 
+  
+  /* Table Styles */
+table {
+width: 100%;
+font-size: 15px;
+border-collapse: collapse;
+background-color: #fff;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+padding: 30px 0;
+
+border-radius: 10px;
+margin-top: 20px;
+}
+
+th, td {
+padding: 12px 13px;
+text-align: left;
+border-bottom: 1px solid #ddd;
+}
+
+th {
+background-color: #f4f4f4;
+}
+
+ 
+  
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .close {
+    color: red;
+    position: absolute;
+    top: 10px;
+  right: 20px;
+  font-size: 40px;
+  cursor: pointer;
+  
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: rgb(170, 0, 0);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Popup Styles */
+  .popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+
+  
+  /* modal.css */
+@keyframes slideIn {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-150%);
+    }
+  }
+  
+  .popup-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: rgba(0, 128, 0, 0.8);
+    color: white;
+    border-radius: 5px;
+    animation: slideIn 0.5s ease-in-out forwards, slideOut 0.5s ease-in-out forwards 3s;
+  }
+  
+  .button-containerin {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .edit-button {
+    background-color: #007bff; /* Blue color */
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .low-button{
+    
+      background-color: #012970; /* Blue color */
+      border: none;
+      padding: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    
+  }
+  
+  .delete-button {
+    background-color: #dc3545; /* Red color */
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .icon {
+    font-size: 1.5rem; /* Increase icon size */
+    color: white; /* White color for icon */
+  }
+
+  /* navbar */
+
+
+  
+  /* Custom Navbar styles */
+.navbar {
+  background-color: #fff;
+}
+
+/* Change color of Navbar links */
+.navbar .navbar-nav .nav-link {
+  color: #012970;
+}
+
+/* Change color of Navbar links on hover */
+.navbar .navbar-nav .nav-link:hover {
+  color: #4154f1;
+}
+
+/* NSS logo styling */
+.nss-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px; /* Adjust margin as needed */
+}
+
+.custom-navbar {
+  height: 80px; /* Adjust the height as needed */
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.nss-logo {
+  height: 40px; /* Adjust the logo size as needed */
+}
+
+.nss-label {
+  font-size: 35px; /* Adjust the font size of NSS label */
+  font-weight: 450;
+  color: #012970;
+
+}
+
+.nav-link {
+  margin-right: 20px;
+  font-weight: 600;
+  font-size: 18px; /* Adjust the font size of navigation links */
+}
+
+.input-field textarea {
+  width: 100%;
+  height: 100px; /* Adjust as needed */
+  padding: 8px; /* Adjust as needed */
+  border: 1px solid #ccc; /* Adjust as needed */
+  border-radius: 5px; /* Adjust as needed */
+  font-size: 16px; /* Adjust as needed */
+}
+
+/* Optional: Add hover and focus styles */
+.input-field textarea:hover,
+.input-field textarea:focus {
+  border-color: #007bff; /* Adjust as needed */
+  outline: none;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button-container button {
+  margin: 0 10px;
+}
+
+.popup {
+  position: fixed;
+  top: 40px; /* Adjust the position as needed */
+  right: 20px; /* Adjust the position as needed */
+  background-color: #28a745;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  opacity: 1;
+  transition: all 0.5s ease; /* Smooth transition */
+  transform: translateX(0);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.popup p {
+  margin: 0;
+  font-size: 16px;
+  margin-right: 10px;
+  color: #012970;
+  font-weight: 500;
+}
+
+.icon-cir {
+  font-size: 24px;
+}
+
+.event-button {
+  background-color: #dc3545; /* Red color */
+  border: none;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  align-items: center;
+  display: flex;
+}
+
+.event-button:focus {
+  outline: none; /* Remove default focus outline */
+}
+
+.popup.hidden {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
